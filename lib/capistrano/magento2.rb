@@ -7,7 +7,7 @@
  # http://davidalger.com/contact/
  ##
 
-SSHKit.config.command_map[:magento] = "/usr/bin/env php -f bin/magento --"
+SSHKit.config.command_map[:magento] = "#{fetch(:php_cli_path).to_s} -f bin/magento --"
 
 module Capistrano
   module Magento2
