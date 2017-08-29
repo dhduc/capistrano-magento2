@@ -7,7 +7,7 @@
  # http://davidalger.com/contact/
  ##
 
-SSHKit.config.command_map[:magento] = "#{fetch(:php_cli_path).to_s} -f bin/magento --"
+SSHKit.config.command_map[:magento] = "/mnt/disk3T/opt/eusonlito-phpfarm/inst/php-7.0.14/bin/php -f bin/magento --"
 
 module Capistrano
   module Magento2

@@ -33,9 +33,6 @@ set :linked_dirs, fetch(:linked_dirs, []).push(
   'var/tmp'
 )
 
-# php cli
-set :php_cli_path, fetch(:php_cli_path, '/usr/bin/env php')
-
 # magento composer repository auth credentials
 set :magento_auth_repo_name, fetch(:magento_auth_repo_name, 'http-basic.repo.magento.com')
 set :magento_auth_public_key, fetch(:magento_auth_public_key, false)
