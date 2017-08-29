@@ -204,7 +204,7 @@ namespace :magento do
           warn "\e[0;31mWarning: Use of magento:setup:upgrade on production systems is discouraged." +
                " See https://github.com/davidalger/capistrano-magento2/issues/34 for details.\e[0m\n"
 
-          execute :magento, 'setup:upgrade --keep-generated'
+          execute :php_magento, 'setup:upgrade --keep-generated'
         end
       end
     end
@@ -225,8 +225,8 @@ namespace :magento do
             db_status = capture :magento, 'setup:db:status --no-ansi', verbosity: Logger::INFO
             
             if not db_status.to_s.include? 'All modules are up to date'
-              execute :magento, 'setup:db-schema:upgrade'
-              execute :magento, 'setup:db-data:upgrade'
+              execute :php_magento, 'setup:db-schema:upgrade'
+              execute :php_magento, 'setup:db-data:upgrade'
             end
           end
         end
@@ -236,7 +236,7 @@ namespace :magento do
       task 'schema:upgrade' do
         on primary fetch(:magento_deploy_setup_role) do
           within release_path do
-            execute :magento, 'setup:db-schema:upgrade'
+            execute :php_magento, 'setup:db-schema:upgrade'
           end
         end
       end
@@ -245,7 +245,7 @@ namespace :magento do
       task 'data:upgrade' do
         on primary fetch(:magento_deploy_setup_role) do
           within release_path do
-            execute :magento, 'setup:db-data:upgrade'
+            execute :php_magento, 'setup:db-data:upgrade'
           end
         end
       end
